@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<math.h>
+void main()
+{
+ int gd=DETECT,gm,x,y,x1,y1,x2,y2,dx,dy,i;
+ float length,xinc,yinc;
+ initgraph(&gd,&gm,"C:\\tc\\bgi");
+ cleardevice();
+ printf("Enter x1,y1,x2,y2:");
+ scanf("%d%d%d%d",&x1,&y1,&x2,&y2);
+ dx=x2-x1;
+ dy=y2-y1;
+ if(abs(dx)>=abs(dy))
+ length=abs(dx);
+ else
+ length=abs(dy);
+ xinc=dx/length;
+ yinc=dy/length;
+ x=x1;
+ y=y1;
+ putpixel((int)x,(int)y,WHITE);
+ i=0;
+ while(i<=length)
+ {
+  x=x+xinc;
+  y=y+yinc;
+  putpixel((int)x,(int)y,WHITE);
+  delay(100);
+  i=i+1;
+ }
+ getch();
+ closegraph();
+ restorecrtmode();
+}
